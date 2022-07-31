@@ -1,0 +1,35 @@
+{% extends "hierarchy/base.html" %} 
+{% block title %}Об авторе проекта{% endblock %}
+{% block content %}
+{% load static %}
+<h1 style="text-align: center;">Привет, меня зовут Настя!</h1>
+<br>
+
+<div class="row">
+  <aside class="col-12 col-md-7">
+    <img class="author_img" src="{% static 'img/author.JPG' %}">
+  </aside>
+
+  <article class="col-12 col-md-5">
+    <p>
+      Я сертифицированный специалист!
+    </p>
+    <p>
+      На этом курсе я научк тебя пользоваться тейпами!
+    </p>
+
+    <p>
+      У меня есть сертификаты.
+    </p>
+
+    <a class="navbar-brand" href="{% url 'about:author' %}">
+      Приобрести курс
+    </a>
+
+    <a class="navbar-brand" href="{% url 'index' %}">
+      Начать обучение
+    </a>
+
+  </article>
+</div>
+{% endblock %} 

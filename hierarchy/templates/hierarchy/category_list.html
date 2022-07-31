@@ -1,0 +1,33 @@
+{% extends "hierarchy/base.html" %} 
+{% load mptt_tags %}
+
+{% block title %}Список категорий{% endblock %}
+
+{% block content %}
+
+<div>
+	{% if request.user.is_authenticated %}
+		<h2 class="h2_tree">Добро пожаловать!</h2>
+		{% else %}
+		<h5 class="h5_tree">
+			Для начала обучения вам необходимо приобрести этот курс. Прочитать об авторе курса и найти ссылку для оплаты курса вы можете <a style="display:inline;" class="nav-link" href="{% url 'about:author' %}">здесь</a>. Вперёд!
+		</h5>
+	{% endif %}
+    <div>
+			<ul class="ul_tree">
+			{% recursetree post_list %}
+					<li class="li_tree">
+						<a class="css-button" href="{{node.get_absolute_url}}">{{node.title}}</a>
+						{% if not node.is_leaf_node %}
+							{% comment %} <ul class="children {% if node.level == 1 %}class_1{% elif node.level == 2 %}class_2{% endif %}"> {% endcomment %}
+							<ul class="children">
+								<span class="span_tree">{{ children }}</span>
+							</ul>
+						{% endif %}
+					</li>
+			{% endrecursetree %}
+			</ul>
+    </div>
+</div>
+
+{% endblock %}

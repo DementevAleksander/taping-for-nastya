@@ -1,0 +1,50 @@
+{% extends "hierarchy/base.html" %}
+{% load mptt_tags %}
+
+{% block title %}Уроки "{{category}}"{% endblock %}
+
+{% block content %}
+	<main>
+		<section>
+			<div class="container">
+					<h1>Уроки "{{category}}"</h1>
+			</div>
+		</section>
+
+		<div class="container">
+			<nav aria-label="breadcrumb">
+				<ol class="breadcrumb">
+					{% for category in category_tree %}
+						<li>Вернуться к <a href="{{ category.get_absolute_url}}">{{ category }}</a></li>
+					{% endfor %}
+				</ol>
+			</nav>
+		</div>
+
+		<div class="container">
+			<ul class="ul_tree">
+			{% recursetree post_list %}
+					<li class="li_tree">
+						<a class="css-button" href="{{node.get_absolute_url}}">{{node.title}}</a>
+						{% if not node.is_leaf_node %}
+							<ul class="children">
+								<span class="span_tree">{{ children }}</span>
+							</ul>
+						{% endif %}
+					</li>
+			{% endrecursetree %}
+			</ul>
+    </div>
+
+
+		<div class="container">
+			{% for post in object_list%}
+				<div class="container_post">
+						<h3>Подзаголовок: {{post}}</h3>
+						<p>Описание к видео: {{post.content}}</p>
+						<iframe width="560" height="315" class="youtube_css" src="{{post.link_text}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+			{% endfor %}
+		</div>
+	</main>
+{% endblock %}
