@@ -11,8 +11,9 @@ class Post(models.Model):
       related_name='posts',
       verbose_name='Название папки'
     )
-    content = models.TextField(verbose_name='Подробный текст')
+    content = models.TextField(verbose_name='Подробный текст', blank=True)
     link_text = models.TextField(verbose_name='Ссылка', default='https://')
+    book = models.FileField(upload_to='media/books/', blank=True)
 
     def __str__(self):
         return self.title

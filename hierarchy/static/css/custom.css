@@ -141,20 +141,25 @@ a { color: yellow;}
 
 /* ---------------- Перечень уроков ---------------- */
 
-/* .container_post{
+.container_post{
 	margin-top: 55px;
 }
 
 .h2_tree{
-	margin-bottom: 35px;
+	margin-top: 65px;
 }
 
 .h5_tree{
 	margin-bottom: 35px;
 }
 
+h3 {
+	text-align: center;
+}
+
 .li_tree{
 	color: black;
+	list-style:none;
 }
 
 .ul_tree{
@@ -162,7 +167,29 @@ a { color: yellow;}
 	padding-left: 0;
 }
 
-.css-button {
+.nav-link {
+	padding: 1px;
+	color: #44a9f2;
+}
+
+.navbar {
+	font-size: 18px;
+}
+
+.nav-breadcrumb{
+	color:#575858;
+}
+
+.nav-breadcrumb:hover {
+	color:#161699;
+}
+
+.span_breadcrumb {
+	font-size: 18px;
+	font-weight: bold;
+}
+
+/* .css-button {
 	font-family: Arial;
 	color: #332e2e;
 	font-size: 16px;
@@ -183,36 +210,152 @@ a { color: yellow;}
 	color: white;
 } */
 
-/* -------- Адаптация под мобильное устройство ------ */
-/* @media (max-width: 768px) {
-  .section_skills {width: 768px;}
+.css-button {
+	font-family: Arial;
+	color: #000000;
+	font-size: 18px;
+	border-radius: 50px;
+	border: 1px #a5b8d1 solid;
+	background: linear-gradient(176deg, #d9e3f1 18%, #c1d1e8 64%);
+	text-shadow: 0px 0px 8px rgba(154, 160, 166, 0.94);
+	box-shadow: inset 2px 2px 6px 0px #ffffff;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	/* width: 500px; */
+	margin-top: 5px;
+	width: 100%;
+}
+.css-button:hover {
+	background: linear-gradient(176deg, #c1d1e8 18%, #d9e3f1 64%);
+}
+.css-button-icon {
+	padding: 16px 26px;
+	/* margin-right: 100px; */
+	margin-right: 10%;
+	border-right: 1px solid rgba(255, 255, 255, 0.16);
+	box-shadow: rgba(0, 0, 0, 0.14) -1px 0px 0px inset;
+}
+.css-button-icon svg {
+	vertical-align: middle;
+	position: relative;
+	font-size: 21px;
+	top: -2px;
+	left: 6px;
+	margin-right: 15px;
+}
+.css-button-text {
+	/* padding: 5px 164px; */
+	/* margin: 5px; */
+	color: black;
+	text-decoration:none;
+	/* width: 75%; */
+	/* display: block; */
+	/* text-align: center; */
+}
 
+.css-button-downloads {
+	font-family: Arial;
+	color: #FFFFFF;
+	font-size: 16px;
+	border-radius: 50px;
+	border: 1px #75adf5 solid;
+	background: linear-gradient(180deg, #63e5ee 5%, #46cfad 100%);
+	text-shadow: 1px 1px 1px #528ecc;
+	box-shadow: inset 1px 1px 2px 0px #bbdaf7;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	text-decoration:none;
+	width: 285px;
+	/* height: 100px; */
+	margin: 15px auto;
+	/* display: block; */
+}
+.css-button-downloads:hover {
+	background: linear-gradient(180deg, #46cfad 5%, #63e5ee 100%);
+}
+.css-button-icon-downloads {
+	padding: 10px 10px;
+	border-right: 1px solid rgba(255, 255, 255, 0.16);
+	box-shadow: rgba(0, 0, 0, 0.14) -1px 0px 0px inset;
+}
+.css-button-icon-downloads svg {
+	vertical-align: middle;
+	position: relative;
+	font-size: 23px;
+}
+.css-button-text-downloads {
+	padding: 12px 45px;
+}
+
+.css-button-text-downloads:hover {
+	color:#44a9f2;
+}
+
+.css-button-div{
+	display: flex;
+}
+
+
+body {
+  background-color: #d9e3f1;
+  color: #495a8d;
+}
+
+main {
+	padding: 45px;
+}
+
+.youtube_css{
+	width: 770px;
+	height: 482px;
+	margin: 5px auto;
+	display: block;
+}
+
+.nav-breadcrumb_postid {
+	color:#161699;
+}
+
+main {padding: 5px 4px 4px 4px;}
+
+/* -------- Адаптация под мобильное устройство ------ */
+@media (max-width: 1280px) {
+	.youtube_css{width: 550px; height: 347px;}
+}
+
+@media (max-width: 1024px) {
+	.youtube_css{width: 550px; height: 347px;}
+}
+
+@media (max-width: 768px) {
   .section_wrapper p {
     margin: 25px 4px 18px 40px;
     font-size: 14px;
     width: 250px;
   }
-
- .section_skills .section_wrapper {padding: 4px 15px;}
-  .skillbar-title {
-    font-size: 12px;
-    width: 114px;
-  }
-
-  .author_img {
-    max-width: 250px;
-  }
+	.author_img {max-width: 250px;}
+	/* main {padding: 45px 4px 4px 4px;} */
+	.youtube_css{width: 465px; height: 291px;}
 }
 
 @media (max-width: 600px) {
-	.section_skills {width: 600px;}
-	.youtube_css{width: 550px; height: 345px;}
+	.youtube_css{width: 429px; height: 267px;}
 }
+
+@media (max-width: 480px) {
+	.css-button-icon {margin-right: 5px;}
+	.css-button-icon svg {margin-right: 5px;}
+	.youtube_css{width: 356px; height: 224px;}
+}
+
 @media (max-width: 425px) {
-	.section_skills {width: 425px;}
-	.youtube_css{width: 325px; height: 205px;}
+	.css-button-icon {margin-right: 5px;}
+	.css-button-icon svg {margin-right: 5px;}
+	.youtube_css{width: 270px; height: 170px;}
 }
-@media (max-width: 320px) {
-	.section_skills {width: 320px;}
+
+/* @media (max-width: 320px) {
 	.youtube_css{width: 270px; height: 170px;}
 } */

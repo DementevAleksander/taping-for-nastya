@@ -11,6 +11,7 @@ class PostAdmin(admin.ModelAdmin):
         'category',
         'content',
         'link_text',
+        'book'
     )
     prepopulated_fields = {"slug": ("title",)}
     # list_editable = ('title',)

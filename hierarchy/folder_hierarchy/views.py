@@ -32,15 +32,18 @@ def group_posts(request, slug):
     template = 'hierarchy/post_list.html'
 
     post_list = Category.objects.filter(parent_id=category.id)
-    # print('!!!!!!!!!!!!self.title:', drilldown_tree_for_node(node=2))
+    # print('!!!!!!!!!!!!_category:', category)
     category_tree = Category.objects.filter(id=category.parent_id)
     # print('!!!!!!!!!!!!category_tree:', category_tree)
+    up_hierarchy = category.get_ancestors(ascending=False, include_self=False)
+    # print("!!!!!!!!!!!!!!!!_get_ancestors:", up_hierarchy)
 
     context = {
         'object_list': object_list,
         'post_list': post_list,
         'category': category,
         'category_tree': category_tree,
+        'up_hierarchy': up_hierarchy,
     }
     return render(request, template, context)
 

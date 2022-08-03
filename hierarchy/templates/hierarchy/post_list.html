@@ -1,31 +1,54 @@
 {% extends "hierarchy/base.html" %}
 {% load mptt_tags %}
 
-{% block title %}Уроки "{{category}}"{% endblock %}
+{% block title %}{{category}}{% endblock %}
 
 {% block content %}
 	<main>
-		<section>
-			<div class="container">
-					<h1>Уроки "{{category}}"</h1>
-			</div>
-		</section>
-
-		<div class="container">
+		<hr>
+			<span class="span_breadcrumb">Навигация:</span>
 			<nav aria-label="breadcrumb">
 				<ol class="breadcrumb">
-					{% for category in category_tree %}
-						<li>Вернуться к <a href="{{ category.get_absolute_url}}">{{ category }}</a></li>
-					{% endfor %}
+					<li class="breadcrumb-item"><a class="nav-breadcrumb" href="{% url 'index' %}">Главная</a></li>
+
+					{% recursetree up_hierarchy %}
+					<li class="breadcrumb-item">
+						<a class="nav-breadcrumb" href="{{node.get_absolute_url}}">
+							{{node.title}}
+						</a>
+						{% if not node.is_leaf_node %}
+								<a class="breadcrumb-item">{{ children }}</a>
+						{% endif %}
+					</li>
+					{% endrecursetree %}
+
+					<li class="breadcrumb-item"><a class="nav-breadcrumb_postid" href="{{post_list.id}}">{{category}}</a></li>
 				</ol>
 			</nav>
-		</div>
+		<hr>
+		
+		<section>
+			<div class="container">
+					<h1>{{category}}</h1>
+			</div>
+		</section>
 
 		<div class="container">
 			<ul class="ul_tree">
 			{% recursetree post_list %}
 					<li class="li_tree">
-						<a class="css-button" href="{{node.get_absolute_url}}">{{node.title}}</a>
+						<a class="css-button-text css-button" href="{{node.get_absolute_url}}">
+
+							<span class="css-button-icon">
+								<svg width="21" height="21" viewBox="2 2 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+									<path d="M11.828 6a3 3 0 01-2.12-.879l-.83-.828A1 1 0 008.173 4H4.5a1 1 0 00-1 .981L3.546 6h-1L2.5 5a2 2 0 012-2h3.672a2 2 0 011.414.586l.828.828A2 2 0 0011.828 5v1z"/>
+									<path fill-rule="evenodd" d="M15.81 6H4.19a1 1 0 00-.996 1.09l.637 7a1 1 0 00.995.91h10.348a1 1 0 00.995-.91l.637-7A1 1 0 0015.81 6zM4.19 5a2 2 0 00-1.992 2.181l.637 7A2 2 0 004.826 16h10.348a2 2 0 001.991-1.819l.637-7A2 2 0 0015.81 5H4.19z" clip-rule="evenodd"/>
+									<path d="M10.616 12.24l3.182-1.969a.442.442 0 000-.742l-3.182-1.97c-.27-.166-.616.036-.616.372V8.7c-.857 0-3.429 0-4 4.8 1.429-2.7 4-2.4 4-2.4v.769c0 .336.346.538.616.371z"/>
+								</svg>
+							</span>
+
+							{{node.title}}
+						</a>
 						{% if not node.is_leaf_node %}
 							<ul class="children">
 								<span class="span_tree">{{ children }}</span>
@@ -40,9 +63,25 @@
 		<div class="container">
 			{% for post in object_list%}
 				<div class="container_post">
-						<h3>Подзаголовок: {{post}}</h3>
-						<p>Описание к видео: {{post.content}}</p>
-						<iframe width="560" height="315" class="youtube_css" src="{{post.link_text}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+						<h3>{{post}}</h3>
+						<p>{{post.content}}</p>
+						<iframe class="youtube_css" src="{{post.link_text}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+					{% if post.book %}
+						<div class="css-button-div">
+							<a class="css-button-downloads" href="{% url 'index' %}{{ post.book }}">
+								<span class="css-button-icon-downloads">
+									<svg width="23" height="23" viewBox="2 2 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+										<path d="M6.887 7.2l-.964-.165A2.5 2.5 0 105.5 12H8v1H5.5a3.5 3.5 0 11.59-6.95 5.002 5.002 0 119.804 1.98A2.501 2.501 0 0115.5 13H12v-1h3.5a1.5 1.5 0 00.237-2.981L14.7 8.854l.216-1.028a4 4 0 10-7.843-1.587l-.185.96z"/>
+										<path fill-rule="evenodd" d="M7 14.5a.5.5 0 01.707 0L10 16.793l2.293-2.293a.5.5 0 11.707.707l-2.646 2.647a.5.5 0 01-.708 0L7 15.207a.5.5 0 010-.707z" clip-rule="evenodd"/>
+										<path fill-rule="evenodd" d="M10 8a.5.5 0 01.5.5v8a.5.5 0 01-1 0v-8A.5.5 0 0110 8z" clip-rule="evenodd"/>
+									</svg>
+								</span>
+								<span class="css-button-text-downloads">Скачать конспект длинный текст для одной кнопки!</span>
+							</a>
+						</div>
+					{% endif %}
+
 				</div>
 			{% endfor %}
 		</div>
