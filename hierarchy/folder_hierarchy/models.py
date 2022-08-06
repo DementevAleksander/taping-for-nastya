@@ -4,16 +4,27 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 class Post(models.Model):
-    title = models.CharField(max_length=100, verbose_name='Название')
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Название видео'
+    )
     slug = models.SlugField(max_length=150)
     category = TreeForeignKey(
       'Category', on_delete=models.PROTECT,
       related_name='posts',
       verbose_name='Название папки'
     )
-    content = models.TextField(verbose_name='Подробный текст', blank=True)
-    link_text = models.TextField(verbose_name='Ссылка', default='https://')
-    book = models.FileField(upload_to='media/books/', blank=True)
+    content = models.TextField(verbose_name='Текст над видео', blank=True)
+    link_text = models.TextField(verbose_name='Ссылка на ютуб', blank=True)
+    book = models.FileField(
+        verbose_name='PDF-файл',
+        upload_to='books/',
+        blank=True
+    )
+    name_book = models.TextField(
+        verbose_name='Текст PDF-кнопки',
+        blank=True
+    )
 
     def __str__(self):
         return self.title

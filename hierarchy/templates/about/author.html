@@ -2,34 +2,92 @@
 {% block title %}Об авторе проекта{% endblock %}
 {% block content %}
 {% load static %}
-<h1 style="text-align: center;">Привет, меня зовут Настя!</h1>
+<h1 style="text-align: center; margin-top: 55px;">Приветствую на моей страничке!</h1>
 <br>
 
-<div class="row">
-  <aside class="col-12 col-md-7">
-    <img class="author_img" src="{% static 'img/author.JPG' %}">
-  </aside>
+<div class="author_wrapper">
 
-  <article class="col-12 col-md-5">
-    <p>
-      Я сертифицированный специалист!
-    </p>
-    <p>
-      На этом курсе я научк тебя пользоваться тейпами!
-    </p>
+  <div class="author_wrapper_section">
+    <div class="author_img_div">
+      <img class="author_img" src="{% static 'img/author.JPG' %}">
+    </div>
 
-    <p>
-      У меня есть сертификаты.
-    </p>
+    <div class="author_text">
+      <p>
+        Я Анастасия Дементьева - практикующий специалист по кинезиологическому тейпированию. 
+        <br>
+        Рассказываю и показываю, как с помощью тейпов вернуть здоровое сияние Вашей коже, стереть мелкие морщинки и уменьшить глубокие, подтянуть овал лица, убрать отёки с лица и тела. А также устранить мышечные спазмы и зажимы, тем самым убрав причину многих болей.
+      </p>
+    </div>
+  </div>
 
-    <a class="navbar-brand" href="{% url 'about:author' %}">
-      Приобрести курс
+  <hr class="author_wrapper_hr">
+
+  <div class="author_wrapper_section">
+    <div class="author_img_div">
+      <img class="author_img" src="{% static 'img/imageautor2.jpg' %}">
+    </div>
+
+    <div class="author_text">
+      <p>
+        Чтобы тейпирование приносило лишь пользу и радость от результата, применять этот инструмент нужно правильно. Поскольку тейпы воздействуют на мышцы, нужно знать, где нужная мышца находится. 
+        А для более выраженного эффекта наши мышцы очень любят мануальные техники перед процедурой тейпирования. 
+        <br>
+        Важные правила и рабочие техники тейпирования и предварительного массажа я подробно описываю на своём курсе, на который Вас и приглашаю.
+      </p>
+    </div>
+  </div>
+
+  <hr class="author_wrapper_hr">
+
+  <div class="author_certificates">
+    <!-- Cекция со слайдером -->
+    <section class="caruosel">
+      <div class="conteiner">
+        <div class="caruosel__inner">
+          <div>
+            <a href="{% static 'img/certificat1.jpg' %}" class="caruosel__inner_link">
+              <img src="{% static 'img/certificat1.jpg' %}" alt="1">
+            </a>
+          </div>
+          <div>
+            <a href="{% static 'img/certificat2.PNG' %}" class="caruosel__inner_link">
+              <img src="{% static 'img/certificat2.PNG' %}" alt="2">
+            </a>
+          </div>
+          <div>
+            <a href="{% static 'img/certificat3.PNG' %}" class="caruosel__inner_link">
+              <img src="{% static 'img/certificat3.PNG' %}" alt="3">
+            </a>
+          </div>
+          <div>
+            <a href="{% static 'img/certificat4.PNG' %}" class="caruosel__inner_link">
+              <img src="{% static 'img/certificat4.PNG' %}" alt="4">
+            </a>
+          </div>
+          <div>
+            <a href="{% static 'img/certificat5.PNG' %}" class="caruosel__inner_link">
+              <img src="{% static 'img/certificat5.PNG' %}" alt="5">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  <hr class="author_wrapper_hr">
+
+  <div class="author_button">
+    <a class="css-button-downloads" href="{% url 'about:author' %}">
+      <span class="css-button-text-downloads">Приобрести курс</span>
     </a>
+  </div>
 
-    <a class="navbar-brand" href="{% url 'index' %}">
-      Начать обучение
+  <div class="author_button">
+    <a class="css-button-downloads" href="{% url 'index' %}">
+      <span class="css-button-text-downloads">Начать обучение</span>
     </a>
+  </div>
 
-  </article>
 </div>
 {% endblock %} 
