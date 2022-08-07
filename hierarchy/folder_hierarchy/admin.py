@@ -6,15 +6,17 @@ from .models import Post, Category
 class PostAdmin(admin.ModelAdmin):
     list_display = (
         'pk',
-        'title',
-        'slug',
+        'serial_number',
         'category',
+        'title',
+        # 'slug',
         'content',
         'link_text',
         'book'
     )
     prepopulated_fields = {"slug": ("title",)}
-    # list_editable = ('title',)
+    list_filter = ('category',)
+    list_editable = ('serial_number',)
 
 
 admin.site.register(Post, PostAdmin)

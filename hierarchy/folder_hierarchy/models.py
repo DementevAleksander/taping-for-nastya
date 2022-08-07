@@ -4,15 +4,19 @@ from mptt.models import MPTTModel, TreeForeignKey
 
 
 class Post(models.Model):
-    title = models.CharField(
-        max_length=100,
-        verbose_name='Название видео'
+    serial_number = models.TextField(
+        max_length=5,
+        blank=True,
+        verbose_name='№п/п',
     )
-    slug = models.SlugField(max_length=150)
     category = TreeForeignKey(
       'Category', on_delete=models.PROTECT,
       related_name='posts',
       verbose_name='Название папки'
+    )
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Название видео'
     )
     content = models.TextField(verbose_name='Текст над видео', blank=True)
     link_text = models.TextField(verbose_name='Ссылка на ютуб', blank=True)
@@ -23,8 +27,10 @@ class Post(models.Model):
     )
     name_book = models.TextField(
         verbose_name='Текст PDF-кнопки',
-        blank=True
+        blank=True,
+        max_length=150
     )
+    slug = models.SlugField(max_length=150)
 
     def __str__(self):
         return self.title
@@ -32,6 +38,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'Запись'
         verbose_name_plural = 'Записи'
+        ordering = ['serial_number']
 
 
 class Category(MPTTModel):

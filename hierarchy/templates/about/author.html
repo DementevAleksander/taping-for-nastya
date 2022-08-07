@@ -77,17 +77,23 @@
   
   <hr class="author_wrapper_hr">
 
-  <div class="author_button">
-    <a class="css-button-downloads" href="{% url 'about:author' %}">
-      <span class="css-button-text-downloads">Приобрести курс</span>
-    </a>
-  </div>
 
-  <div class="author_button">
-    <a class="css-button-downloads" href="{% url 'index' %}">
-      <span class="css-button-text-downloads">Начать обучение</span>
-    </a>
-  </div>
+  {% if request.user.is_authenticated %}
+    <div class="author_button">
+      <a class="css-button-downloads" href="{% url 'index' %}">
+        <span class="css-button-text-downloads">Начать обучение</span>
+      </a>
+    </div>
+
+    {% else %}
+
+    <div class="author_button">
+      <a class="css-button-downloads" href="{% url 'about:author' %}">
+        <span class="css-button-text-downloads">Приобрести курс</span>
+      </a>
+    </div>
+
+    {% endif %}
 
 </div>
 {% endblock %} 
