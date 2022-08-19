@@ -10,10 +10,15 @@
 		<h2 class="h2_tree">Добро пожаловать!</h2>
 		{% else %}
 		<h5 class="h5_tree">
-			Для начала обучения вам необходимо приобрести этот курс.
+			Войдите в систему, чтобы продолжить обучение.
 			<br>
-			Прочитать об авторе курса и найти ссылку для оплаты курса вы можете по ссылке ниже
-			<a class="nav-link" href="{% url 'about:author' %}">Начать курс!</a>
+			Если вы ещё не приобрели курс, вы можете это сделать на странице автора.
+			<div class="css-button-div">
+				<a class="css-button-downloads" href="{% url 'about:author' %}">
+					<span class="css-button-text-downloads">Об авторе</span>
+				</a>
+			</div>
+
 		</h5>
 	{% endif %}
     <div>			

@@ -12,7 +12,8 @@ class PostAdmin(admin.ModelAdmin):
         # 'slug',
         'content',
         'link_text',
-        'book'
+        'book',
+        'free_videos',
     )
     prepopulated_fields = {"slug": ("title",)}
     list_filter = ('category',)

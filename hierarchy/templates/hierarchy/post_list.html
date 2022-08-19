@@ -63,7 +63,8 @@
 		<div class="container">
 			{% for post in object_list%}
 				<div class="container_post">
-						<h3>{{post}}</h3>
+					<ul class="border">
+						<li class="index_post"><h3>{{post}}</h3>
 						<p>{{post.content}}</p>
 						
 						{% if post.link_text %}
@@ -84,7 +85,8 @@
 								</a>
 							</div>
 						{% endif %}
-
+					</li>
+				</ul>
 				</div>
 			{% endfor %}
 		</div>

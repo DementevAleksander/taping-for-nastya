@@ -30,6 +30,10 @@ class Post(models.Model):
         blank=True,
         max_length=150
     )
+    free_videos = models.BooleanField(
+        verbose_name='Бесплатно',
+        default=False
+    )
     slug = models.SlugField(max_length=150)
 
     def __str__(self):

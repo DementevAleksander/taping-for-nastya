@@ -17,13 +17,13 @@
           </li>
           {% endwith %}
 
+          {% if request.user.is_authenticated %}
+
           {% with request.resolver_match.view_name as view_name %}  
             <li class="nav-item"> 
               <a class="nav-link {% if view_name  == 'index' %}active{% endif %}" href="{% url 'index' %}">Курс</a>
             </li>
           {% endwith %}
-
-          {% if request.user.is_authenticated %}
 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Пользователь: {{ user.username }}</a>
@@ -36,6 +36,12 @@
           </li>       
 
           {% else %}
+
+          {% with request.resolver_match.view_name as view_name %}
+            <li class="nav-item"> 
+              <a class="nav-link {% if view_name  == 'course_content' %}active{% endif %}" href="{% url 'course_content' %}">Содержание</a>
+            </li>
+          {% endwith %}
           
           {% with request.resolver_match.view_name as view_name %}  
           <li class="nav-item"> 

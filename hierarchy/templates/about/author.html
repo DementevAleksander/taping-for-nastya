@@ -1,6 +1,7 @@
 {% extends "hierarchy/base.html" %} 
-{% block title %}Об авторе проекта{% endblock %}
+{% block title %}Об авторе{% endblock %}
 {% block content %}
+{% load mptt_tags %}
 {% load static %}
 <h1 style="text-align: center; margin-top: 55px;">Приветствую на моей страничке!</h1>
 <br>
@@ -41,6 +42,7 @@
   <hr class="author_wrapper_hr">
 
   <div class="author_certificates">
+    <h3>Мои сертификаты</h3>
     <!-- Cекция со слайдером -->
     <section class="caruosel">
       <div class="conteiner">
@@ -77,6 +79,30 @@
   
   <hr class="author_wrapper_hr">
 
+  <section class="social_networks">
+    <h3>Не забудь подписаться 🥰👇</h3>
+    <a class="navbar-brand" target="_blank" href="https://likee.video/@ansstasia_new?af_sub4=&af_sub5=&l=ru">
+      <img class="social_networks_img" src="{% static 'img/socialnetworks/likee.png' %}" width="65" height="65" class="d-inline-block align-top" alt="likee">
+    </a>
+    <a class="navbar-brand" target="_blank" href="https://www.youtube.com/channel/UCeiHtvZQwqonRJO_R1xmnfw">
+      <img class="social_networks_img" src="{% static 'img/socialnetworks/youtube.png' %}" width="65" height="65" class="d-inline-block align-top" alt="youtube">
+    </a>
+    <a class="navbar-brand" target="_blank" href="https://vk.com/tape_for_you">
+      <img class="social_networks_img" src="{% static 'img/socialnetworks/vk.png' %}" width="65" height="65" class="d-inline-block align-top" alt="vk">
+    </a>
+    <a class="navbar-brand" target="_blank" href="https://www.tiktok.com/@anastasija_dementeva?refer=creator_embed">
+      <img class="social_networks_img" src="{% static 'img/socialnetworks/tiktok.png' %}" width="65" height="65" class="d-inline-block align-top" alt="tiktok">
+    </a>
+
+    <div class="author_button">
+      <a class="css-button-tme" target="_blank" href="https://t.me/anastasiadementeva">
+        <img class="social_networks_img" src="{% static 'img/socialnetworks/tme.png' %}" width="65" height="65" class="d-inline-block align-top" alt="tme">
+        <span class="css-button-text-tme">А тут бесплатный клуб с обзорами моих уроков💝</span>
+      </a>
+    </div>
+  </section>
+
+  <hr class="author_wrapper_hr">
 
   {% if request.user.is_authenticated %}
     <div class="author_button">
@@ -85,15 +111,16 @@
       </a>
     </div>
 
-    {% else %}
-
+  {% else %}
     <div class="author_button">
-      <a class="css-button-downloads" href="{% url 'about:author' %}">
-        <span class="css-button-text-downloads">Приобрести курс</span>
+      <a class="css-button-downloads" href="{% url 'course_content' %}">
+        <span class="css-button-text-downloads">Содержание курса</span>
       </a>
     </div>
+    
+    {% include 'hierarchy/includes/buy_course_button.html' %}
 
-    {% endif %}
+  {% endif %}
 
 </div>
 {% endblock %} 

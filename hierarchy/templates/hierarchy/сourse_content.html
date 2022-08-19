@@ -1,0 +1,66 @@
+{% extends "hierarchy/base.html" %} 
+{% block title %}Содержание курса{% endblock %}
+{% block content %}
+{% load mptt_tags %}
+{% load static %}
+<h1 style="text-align: center; margin-top: 55px;">Содержание курса</h1>
+<br>
+
+<div class="author_wrapper">
+
+  <ul class="ul_tree">
+  {% recursetree post_list %}
+      <li class="li_tree">
+        <a class="css-button-text css-button">
+          <span class="css-button-icon">
+            <svg width="16" height="16" viewBox="2 2 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M6.646 11.646a.5.5 0 01.708 0L10 14.293l2.646-2.647a.5.5 0 01.708.708l-3 3a.5.5 0 01-.708 0l-3-3a.5.5 0 010-.708z" clip-rule="evenodd"/>
+              <path fill-rule="evenodd" d="M10 4.5a.5.5 0 01.5.5v9a.5.5 0 01-1 0V5a.5.5 0 01.5-.5z" clip-rule="evenodd"/>
+            </svg>
+          </span>
+
+          {{node.title}}
+        </a>
+
+        <ul class="border">
+          {% for post in node.posts.all %}
+            <li class="index_post"><p>{{ post }}</p></li>
+
+            {% if post.link_text and post.free_videos %}
+            <iframe class="youtube_css" src="{{post.link_text}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+            {% elif post.link_text and not post.free_videos %}
+              <span class="index_post_paid_videos">Видео доступно в платной версии!</span>
+            {% endif %}
+          {% endfor %}
+        </ul>
+
+        
+        {% if not node.is_leaf_node %}
+          <ul class="children">
+            <span class="css-button-text">{{ children }}</span>
+          </ul>
+        {% endif %}
+      </li>
+    {% endrecursetree %}
+  </ul>
+
+  {% if request.user.is_authenticated %}
+    <div class="author_button">
+      <a class="css-button-downloads" href="{% url 'index' %}">
+        <span class="css-button-text-downloads">Начать обучение</span>
+      </a>
+    </div>
+
+  {% else %}
+    <div class="author_button" id="buy_course">
+      <a class="css-button-downloads" href="{% url 'about:author' %}">
+        <span class="css-button-text-downloads">Об авторе</span>
+      </a>
+    </div>
+
+    {% include 'hierarchy/includes/buy_course_button.html' %}
+  {% endif %}
+
+</div>
+{% endblock %} 

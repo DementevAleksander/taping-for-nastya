@@ -20,9 +20,14 @@ def index(request):
     return render(request, template, context)
 
 
-# class CategoryListView(ListView):
-#     model = Category
-#     template_name = "hierarchy/category_list.html"
+def сourse_content(request):
+    post_list = Category.objects.select_related().all()
+    template = 'hierarchy/сourse_content.html'
+
+    context = {
+        'post_list': post_list,
+    }
+    return render(request, template, context)
 
 
 @login_required
@@ -30,11 +35,8 @@ def group_posts(request, slug):
     category = get_object_or_404(Category, slug=slug)
     object_list = Post.objects.filter(category=category)
     template = 'hierarchy/post_list.html'
-
     post_list = Category.objects.filter(parent_id=category.id)
-    # print('!!!!!!!!!!!!_category:', category)
     category_tree = Category.objects.filter(id=category.parent_id)
-    # print('!!!!!!!!!!!!category_tree:', category_tree)
     up_hierarchy = category.get_ancestors(ascending=False, include_self=False)
     # print("!!!!!!!!!!!!!!!!_get_ancestors:", up_hierarchy)
 
@@ -46,18 +48,3 @@ def group_posts(request, slug):
         'up_hierarchy': up_hierarchy,
     }
     return render(request, template, context)
-
-
-# class PostByCategoryView(ListView):
-#     context_object_name = 'posts'
-#     template_name = 'hierarchy/post_list.html'
-
-#     def get_queryset(self):
-#         self.category = Category.objects.get(slug=self.kwargs['slug'])
-#         queryset = Post.objects.filter(category=self.category)
-#         return queryset
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = self.category
-#         return context

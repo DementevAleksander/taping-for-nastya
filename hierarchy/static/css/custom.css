@@ -10,6 +10,8 @@ main {
 p{
 	text-align: center;
 	font-size: 18px;
+	margin-top: 4px;
+	margin-bottom: 4px;
 }
 
 .container_post{
@@ -22,16 +24,84 @@ p{
 
 .h5_tree{
 	margin-bottom: 35px;
+	margin-top: 35px;
+	color:#821f1f;
+	text-align: center;
 }
+
+h1{text-align: center;}
 
 h3 {
 	text-align: center;
+	margin-bottom: 45px;
+	margin-top: 15px;
+	color: #495a8d;
+}
+
+.social_networks_img{
+	border-radius: 15px;
+}
+
+.social_networks_img:hover{
+	opacity: 0.4;
 }
 
 .li_tree{
 	color: black;
 	list-style:none;
 }
+
+.index_post {
+	color: black;
+	list-style:none;
+	margin-top: 25px;
+	margin-bottom: 5px;
+}
+
+.index_post p {
+	font-size: 14px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+}
+
+.index_post_paid_videos{
+	font-size: 12px;
+	color:#821f1f;
+	display: block;
+	text-align: center;
+	margin-bottom: 15px;
+}
+
+/* --------- Оформление списка на стронице автора --------- */
+.border {
+	list-style: none;
+	/* padding: 0; */
+}
+.border li {
+	/* font-family: "Trebuchet MS", "Lucida Sans"; */
+	padding: 4px 8px;
+	margin-bottom: 10px;
+	border-radius: 25px;
+	border-left: 10px solid #1d6efd; 
+	box-shadow: 2px -2px 5px 0 rgba(0,0,0,.1),
+			 -2px -2px 5px 0 rgba(0,0,0,.1),
+			2px 2px 5px 0 rgba(0,0,0,.1),
+			-2px 2px 5px 0 rgba(0,0,0,.1);
+	/* font-size: 12px;
+	letter-spacing: 2px; */
+	/* transition: 0.3s all linear; */
+	/* border-color: #8bc63e; */
+	}
+/* .border li:nth-child(2){border-color: #8bc63e;}
+.border li:nth-child(3){border-color: #fcba30;}
+.border li:nth-child(4){border-color: #1ccfc9;}
+.border li:nth-child(5){border-color: #493224;} */
+/* .border li:hover {border-left: 10px solid transparent;} */
+/* .border li:nth-child(1):hover {border-right: 10px solid #f05d22;}
+.border li:nth-child(2):hover {border-right: 10px solid #8bc63e;}
+.border li:nth-child(3):hover {border-right: 10px solid #fcba30;}
+.border li:nth-child(4):hover {border-right: 10px solid #1ccfc9;}
+.border li:nth-child(5):hover {border-right: 10px solid #493224;} */
 
 .ul_tree{
 	margin-left: 0;
@@ -103,7 +173,7 @@ h3 {
 }
 
 .css-button-downloads {
-	font-family: Arial;
+	/* font-family: Arial; */
 	color: #FFFFFF;
 	font-size: 16px;
 	border-radius: 50px;
@@ -139,8 +209,40 @@ h3 {
 	text-align: center;
 }
 
+.css-button-text-tme {
+	display: block;
+	margin: 5px 5px 5px 25px;
+	text-align: left;
+}
+
+.navbar-brand{
+	margin-right: 2px;
+}
+
 .css-button-div{
 	display: flex;
+}
+
+.css-button-tme {
+	/* font-family: Arial; */
+	color: #FFFFFF;
+	font-size: 16px;
+	border-radius: 16px;
+	border: 1px #75adf5 solid;
+	background: linear-gradient(493deg, #61a8de 65%, #46cfad 100%);
+	text-shadow: 1px 1px 1px #528ecc;
+	box-shadow: inset 1px 1px 2px 0px #bbdaf7;
+	cursor: pointer;
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	width: 315px;
+	margin: 15px auto;
+	min-height: 62px;
+}
+.css-button-tme:hover {
+	background: linear-gradient(180deg, #46cfad 5%, #63e5ee 100%);
+	color:#266967;
 }
 
 .youtube_css{
@@ -191,6 +293,15 @@ h3 {
 
 .author_wrapper_hr {
 	width: 65%;
+	margin: 20px 0;
+	padding: 0;
+	height: 0;
+	border: none;
+	box-shadow: 0 0 10px 1px black;
+}
+
+.footer_hr {
+	/* width: 90%; */
 	margin: 20px 0;
 	padding: 0;
 	height: 0;
@@ -355,6 +466,11 @@ h3 {
 	cursor: pointer;
 }
 
+/* -------- Социальные сети ------ */
+.social_networks {
+	text-align: center;
+}
+
 /* -------- Адаптация под мобильное устройство ------ */
 @media (max-width: 1280px) {
 	.youtube_css{width: 550px; height: 347px;}
@@ -388,32 +504,30 @@ h3 {
 		align-items: center;
 		margin-bottom: 45px;
 	}
+	.container, .container-sm {max-width: 699px;}
+	.container_post {margin-left: -35px;}
 }
 
 @media (max-width: 600px) {
 	.author_img {max-width: 245px;}
-	.youtube_css{width: 429px; height: 267px;}
+	.youtube_css{width: 380px; height: 238px;}
 	.caruosel__inner {width:480px;}
 }
 
 @media (max-width: 480px) {
-	.author_img {
-		/* max-width: 190px; */
-		border-radius: 40px 1px;
-	}
+	.author_img {border-radius: 40px 1px;}
 	.css-button-icon {margin-right: 5px;}
 	.css-button-icon svg {margin-right: 5px;}
-	.youtube_css{width: 356px; height: 224px;}
+	.youtube_css{width: 315px; height: 197px;}
 	.caruosel__inner {width:400px;}
 }
 
 @media (max-width: 425px) {
-	.author_img {
-		/* max-width: 145px; */
-		border-radius: 20px 1px;
-	}
+	h3{font-size: 19px;}
+	.author_img {border-radius: 20px 1px;}
 	.css-button-icon {margin-right: 5px;}
 	.css-button-icon svg {margin-right: 5px;}
-	.youtube_css{width: 270px; height: 170px;}
+	.youtube_css{width: 215px; height: 135px;}
 	.caruosel__inner {width:355px;}
+	.css-button-text-downloads {font-size: 14px;}
 }
